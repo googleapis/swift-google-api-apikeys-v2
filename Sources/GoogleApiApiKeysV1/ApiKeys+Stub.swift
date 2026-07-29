@@ -31,15 +31,15 @@ extension Clients {
 
     func listKeys(
       request: ListKeysRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleApiApikeysV2.ListKeysResponse
+    ) async throws -> GoogleApiApiKeysV1.ListKeysResponse
 
     func getKey(
       request: GetKeyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleApiApikeysV2.Key
+    ) async throws -> GoogleApiApiKeysV1.Key
 
     func getKeyString(
       request: GetKeyStringRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleApiApikeysV2.GetKeyStringResponse
+    ) async throws -> GoogleApiApiKeysV1.GetKeyStringResponse
 
     func updateKey(
       request: UpdateKeyRequest, options: GoogleCloudGax.RequestOptions
@@ -55,7 +55,7 @@ extension Clients {
 
     func lookupKey(
       request: LookupKeyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleApiApikeysV2.LookupKeyResponse
+    ) async throws -> GoogleApiApiKeysV1.LookupKeyResponse
 
     func getOperation(
       request: GoogleLongrunning.GetOperationRequest, options: GoogleCloudGax.RequestOptions
@@ -98,7 +98,7 @@ extension Clients {
 
     public func listKeys(
       request: ListKeysRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleApiApikeysV2.ListKeysResponse {
+    ) async throws -> GoogleApiApiKeysV1.ListKeysResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
@@ -117,12 +117,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleApiApikeysV2.ListKeysResponse.self, from: data)
+        GoogleApiApiKeysV1.ListKeysResponse.self, from: data)
     }
 
     public func getKey(
       request: GetKeyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleApiApikeysV2.Key {
+    ) async throws -> GoogleApiApiKeysV1.Key {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -137,12 +137,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleApiApikeysV2.Key.self, from: data)
+        GoogleApiApiKeysV1.Key.self, from: data)
     }
 
     public func getKeyString(
       request: GetKeyStringRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleApiApikeysV2.GetKeyStringResponse {
+    ) async throws -> GoogleApiApiKeysV1.GetKeyStringResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -157,7 +157,7 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleApiApikeysV2.GetKeyStringResponse.self, from: data)
+        GoogleApiApiKeysV1.GetKeyStringResponse.self, from: data)
     }
 
     public func updateKey(
@@ -232,7 +232,7 @@ extension Clients {
 
     public func lookupKey(
       request: LookupKeyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleApiApikeysV2.LookupKeyResponse {
+    ) async throws -> GoogleApiApiKeysV1.LookupKeyResponse {
       let path = try { () throws -> Swift.String in
         return "/v2/keys:lookupKey"
       }()
@@ -246,7 +246,7 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleApiApikeysV2.LookupKeyResponse.self, from: data)
+        GoogleApiApiKeysV1.LookupKeyResponse.self, from: data)
     }
 
     public func getOperation(

@@ -67,14 +67,14 @@ extension Clients {
 
     public func listKeys(
       request: ListKeysRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleApiApikeysV2.ListKeysResponse {
+    ) async throws -> GoogleApiApiKeysV1.ListKeysResponse {
       try await self._intercept(
         request: request,
         options: options,
         idempotent: true,
         action: {
           (r: ListKeysRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleApiApikeysV2.ListKeysResponse
+            -> GoogleApiApiKeysV1.ListKeysResponse
           in
           return try await self.inner.listKeys(request: r, options: o)
         })
@@ -82,14 +82,14 @@ extension Clients {
 
     public func getKey(
       request: GetKeyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleApiApikeysV2.Key {
+    ) async throws -> GoogleApiApiKeysV1.Key {
       try await self._intercept(
         request: request,
         options: options,
         idempotent: true,
         action: {
           (r: GetKeyRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleApiApikeysV2.Key
+            -> GoogleApiApiKeysV1.Key
           in
           return try await self.inner.getKey(request: r, options: o)
         })
@@ -97,14 +97,14 @@ extension Clients {
 
     public func getKeyString(
       request: GetKeyStringRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleApiApikeysV2.GetKeyStringResponse {
+    ) async throws -> GoogleApiApiKeysV1.GetKeyStringResponse {
       try await self._intercept(
         request: request,
         options: options,
         idempotent: true,
         action: {
           (r: GetKeyStringRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleApiApikeysV2.GetKeyStringResponse
+            -> GoogleApiApiKeysV1.GetKeyStringResponse
           in
           return try await self.inner.getKeyString(request: r, options: o)
         })
@@ -157,14 +157,14 @@ extension Clients {
 
     public func lookupKey(
       request: LookupKeyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleApiApikeysV2.LookupKeyResponse {
+    ) async throws -> GoogleApiApiKeysV1.LookupKeyResponse {
       try await self._intercept(
         request: request,
         options: options,
         idempotent: true,
         action: {
           (r: LookupKeyRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleApiApikeysV2.LookupKeyResponse
+            -> GoogleApiApiKeysV1.LookupKeyResponse
           in
           return try await self.inner.lookupKey(request: r, options: o)
         })

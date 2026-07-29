@@ -117,7 +117,7 @@ public class ApiKeysClient: Clients.ApiKeysProtocol {
   /// @Snippet(path: "ApiKeys_ListKeys")
   public func listKeys(
     request: ListKeysRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleApiApikeysV2.ListKeysResponse {
+  ) async throws -> GoogleApiApiKeysV1.ListKeysResponse {
     try await self.inner.listKeys(request: request, options: options)
   }
 
@@ -131,7 +131,7 @@ public class ApiKeysClient: Clients.ApiKeysProtocol {
   public func listKeys(
     byItem: ListKeysRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<Key, Swift.Error> {
-    let listRpc = { (token: Swift.String) async throws -> GoogleApiApikeysV2.ListKeysResponse in
+    let listRpc = { (token: Swift.String) async throws -> GoogleApiApiKeysV1.ListKeysResponse in
       var request = byItem
       request.pageToken = token
       return try await self.listKeys(request: request, options: options)
@@ -148,7 +148,7 @@ public class ApiKeysClient: Clients.ApiKeysProtocol {
   /// @Snippet(path: "ApiKeys_GetKey")
   public func getKey(
     request: GetKeyRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleApiApikeysV2.Key {
+  ) async throws -> GoogleApiApiKeysV1.Key {
     try await self.inner.getKey(request: request, options: options)
   }
 
@@ -160,7 +160,7 @@ public class ApiKeysClient: Clients.ApiKeysProtocol {
   /// @Snippet(path: "ApiKeys_GetKeyString")
   public func getKeyString(
     request: GetKeyStringRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleApiApikeysV2.GetKeyStringResponse {
+  ) async throws -> GoogleApiApiKeysV1.GetKeyStringResponse {
     try await self.inner.getKeyString(request: request, options: options)
   }
 
@@ -384,7 +384,7 @@ public class ApiKeysClient: Clients.ApiKeysProtocol {
   /// @Snippet(path: "ApiKeys_LookupKey")
   public func lookupKey(
     request: LookupKeyRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleApiApikeysV2.LookupKeyResponse {
+  ) async throws -> GoogleApiApiKeysV1.LookupKeyResponse {
     try await self.inner.lookupKey(request: request, options: options)
   }
 
@@ -422,7 +422,7 @@ extension Clients {
     ) async throws -> any GoogleCloudGax.PollableOperation<Key>
 
     /// See `ApiKeysClient.listKeys`.
-    func listKeys(request: ListKeysRequest) async throws -> GoogleApiApikeysV2.ListKeysResponse
+    func listKeys(request: ListKeysRequest) async throws -> GoogleApiApiKeysV1.ListKeysResponse
 
     /// See `ApiKeysClient.listKeys`.
     func listKeys(
@@ -435,21 +435,21 @@ extension Clients {
     ) throws -> any AsyncSequence<Key, Swift.Error>
 
     /// See `ApiKeysClient.getKey`.
-    func getKey(request: GetKeyRequest) async throws -> GoogleApiApikeysV2.Key
+    func getKey(request: GetKeyRequest) async throws -> GoogleApiApiKeysV1.Key
 
     /// See `ApiKeysClient.getKey`.
     func getKey(
       name: Swift.String,
-    ) async throws -> GoogleApiApikeysV2.Key
+    ) async throws -> GoogleApiApiKeysV1.Key
 
     /// See `ApiKeysClient.getKeyString`.
     func getKeyString(request: GetKeyStringRequest) async throws
-      -> GoogleApiApikeysV2.GetKeyStringResponse
+      -> GoogleApiApiKeysV1.GetKeyStringResponse
 
     /// See `ApiKeysClient.getKeyString`.
     func getKeyString(
       name: Swift.String,
-    ) async throws -> GoogleApiApikeysV2.GetKeyStringResponse
+    ) async throws -> GoogleApiApiKeysV1.GetKeyStringResponse
 
     /// See `ApiKeysClient.updateKey`.
     func updateKey(request: UpdateKeyRequest) async throws -> GoogleLongrunning.Operation
@@ -484,7 +484,7 @@ extension Clients {
       .PollableOperation<Key>
 
     /// See `ApiKeysClient.lookupKey`.
-    func lookupKey(request: LookupKeyRequest) async throws -> GoogleApiApikeysV2.LookupKeyResponse
+    func lookupKey(request: LookupKeyRequest) async throws -> GoogleApiApiKeysV1.LookupKeyResponse
 
     /// See `ApiKeysClient.createKey`.
     func createKey(
@@ -499,7 +499,7 @@ extension Clients {
     /// See `ApiKeysClient.listKeys`.
     func listKeys(
       request: ListKeysRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleApiApikeysV2.ListKeysResponse
+    ) async throws -> GoogleApiApiKeysV1.ListKeysResponse
 
     /// See `ApiKeysClient.listKeys`.
     func listKeys(
@@ -509,12 +509,12 @@ extension Clients {
     /// See `ApiKeysClient.getKey`.
     func getKey(
       request: GetKeyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleApiApikeysV2.Key
+    ) async throws -> GoogleApiApiKeysV1.Key
 
     /// See `ApiKeysClient.getKeyString`.
     func getKeyString(
       request: GetKeyStringRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleApiApikeysV2.GetKeyStringResponse
+    ) async throws -> GoogleApiApiKeysV1.GetKeyStringResponse
 
     /// See `ApiKeysClient.updateKey`.
     func updateKey(
@@ -549,7 +549,7 @@ extension Clients {
     /// See `ApiKeysClient.lookupKey`.
     func lookupKey(
       request: LookupKeyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleApiApikeysV2.LookupKeyResponse
+    ) async throws -> GoogleApiApiKeysV1.LookupKeyResponse
   }
 }
 
@@ -594,14 +594,14 @@ extension Clients.ApiKeysProtocol {
     return try await self.createKey(withPolling: request)
   }
 
-  public func listKeys(request: ListKeysRequest) async throws -> GoogleApiApikeysV2.ListKeysResponse
+  public func listKeys(request: ListKeysRequest) async throws -> GoogleApiApiKeysV1.ListKeysResponse
   {
     try await self.listKeys(request: request, options: .init())
   }
 
   public func listKeys(
     request: ListKeysRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleApiApikeysV2.ListKeysResponse {
+  ) async throws -> GoogleApiApiKeysV1.ListKeysResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -614,7 +614,7 @@ extension Clients.ApiKeysProtocol {
   public func listKeys(
     byItem: ListKeysRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<Key, Swift.Error> {
-    let listRpc = { (token: Swift.String) async throws -> GoogleApiApikeysV2.ListKeysResponse in
+    let listRpc = { (token: Swift.String) async throws -> GoogleApiApiKeysV1.ListKeysResponse in
       throw GoogleCloudGax.RequestError.unimplemented
     }
     return GoogleCloudGax.PaginatedResponseSequence(listRpc: listRpc)
@@ -629,19 +629,19 @@ extension Clients.ApiKeysProtocol {
     return try self.listKeys(byItem: request)
   }
 
-  public func getKey(request: GetKeyRequest) async throws -> GoogleApiApikeysV2.Key {
+  public func getKey(request: GetKeyRequest) async throws -> GoogleApiApiKeysV1.Key {
     try await self.getKey(request: request, options: .init())
   }
 
   public func getKey(
     request: GetKeyRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleApiApikeysV2.Key {
+  ) async throws -> GoogleApiApiKeysV1.Key {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getKey(
     name: Swift.String,
-  ) async throws -> GoogleApiApikeysV2.Key {
+  ) async throws -> GoogleApiApiKeysV1.Key {
     let request = GetKeyRequest().with {
       $0.name = name
     }
@@ -649,20 +649,20 @@ extension Clients.ApiKeysProtocol {
   }
 
   public func getKeyString(request: GetKeyStringRequest) async throws
-    -> GoogleApiApikeysV2.GetKeyStringResponse
+    -> GoogleApiApiKeysV1.GetKeyStringResponse
   {
     try await self.getKeyString(request: request, options: .init())
   }
 
   public func getKeyString(
     request: GetKeyStringRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleApiApikeysV2.GetKeyStringResponse {
+  ) async throws -> GoogleApiApiKeysV1.GetKeyStringResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getKeyString(
     name: Swift.String,
-  ) async throws -> GoogleApiApikeysV2.GetKeyStringResponse {
+  ) async throws -> GoogleApiApiKeysV1.GetKeyStringResponse {
     let request = GetKeyStringRequest().with {
       $0.name = name
     }
@@ -768,14 +768,14 @@ extension Clients.ApiKeysProtocol {
   }
 
   public func lookupKey(request: LookupKeyRequest) async throws
-    -> GoogleApiApikeysV2.LookupKeyResponse
+    -> GoogleApiApiKeysV1.LookupKeyResponse
   {
     try await self.lookupKey(request: request, options: .init())
   }
 
   public func lookupKey(
     request: LookupKeyRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleApiApikeysV2.LookupKeyResponse {
+  ) async throws -> GoogleApiApiKeysV1.LookupKeyResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
